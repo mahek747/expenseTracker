@@ -5,6 +5,7 @@ const { dbConnection } = require("./database/db");
 const userRoute = require("./routes/user.route");  
 const expenseRoute = require("./routes/expense.route");  
 const aggragationRoute = require("./routes/aggregation.route");  
+const roleRoute = require("./routes/role.route");  
 
 dotenv.config();  
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRoute);  
 app.use("/expense", expenseRoute);  
 app.use("/aggragate", aggragationRoute);  
+app.use("/role", roleRoute);  
 
 dbConnection();  
 
