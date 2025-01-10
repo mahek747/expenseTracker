@@ -1,13 +1,31 @@
 const mongoose = require('mongoose');
 
-// Define Aggregation Result Schema
-const aggregationResultSchema = new mongoose.Schema({
-    category: String,
-    totalAmount: Number,
-    count: Number,
-    startDate: Date,
-    endDate: Date,
-}, { timestamps: true });
+const aggregationSchema = new mongoose.Schema(
+  {
+    category: {
+      type: String,
+      required: [true, 'Category is required'],
+    },
+    totalAmount: {
+      type: Number,
+      required: [true, 'Total amount is required'],
+      default: 0, 
+    },
+    count: {
+      type: Number,
+      required: [true, 'Count is required'],
+      default: 0, 
+    },
+    startDate: {
+      type: Date,
+      required: false, 
+    },
+    endDate: {
+      type: Date,
+      required: false, 
+    },
+  },
+  { timestamps: true }
+);
 
-// Model for aggregation result
-module.exports = mongoose.model('AggregationResult', aggregationResultSchema);
+module.exports = mongoose.model('Aggregation', aggregationSchema);

@@ -1,8 +1,9 @@
-const express = require("express");
-const authenticate = require('../middlewares/auth');
+const express = require('express');
 const route = express.Router();
-const { aggregateByCategory }  = require('../controllers/aggregation.controller')
+const aggregationController = require('../controllers/aggregation.controller');
 
-route.get('/aggregate/by-category', authenticate, aggregateByCategory);
-
+route.get('/by-category', (req, res, next) => {
+    console.log('Route /by-category accessed');
+    next();
+});
 module.exports = route;
